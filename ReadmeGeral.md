@@ -1,5 +1,4 @@
 # Instalação e configuração de ambiemte #
-
 ## VsCode ##
 sudo apt install code
 
@@ -9,19 +8,32 @@ sudo add-apt-repository ppa:webupd8team/java
 ## Eclipse ##
 https://www.eclipse.org/downloads/
 
-
 ## Maven##
 ### Arquivos compactados ###
+sudo apt-get --only-upgrade install maven
+
 --> Descompactando
 tar -zxvf apache-maven-3.6.3-bin.tar.gz
-
 tar -Jxxvf node-v12.16.1-linux-x64.tar.xz
 
 --> Movendo pastas
 sudo mv <nomeArquivo> apache-maven-3.6.3/ /opt/
 
+cd ~/Downloads
+wget http://apache.mirrors.timporter.net/maven/maven-3/3.1.1/binaries/apache-maven-3.1.1-bin.tar.gz
+
+sudo mkdir -p /usr/local/apache-maven
+sudo mv apache-maven-3.1.1-bin.tar.gz /usr/local/apache-maven
+cd /usr/local/apache-maven
+sudo tar -xzvf apache-maven-3.1.1-bin.tar.gz
+
 --> Variável de ambiente MVN
 export PATH=/usr/local/apache-maven-3.x.y/bin:$PATH
+
+export M2_HOME=/usr/local/apache-maven/apache-maven-3.1.1
+export M2=$M2_HOME/bin
+export MAVEN_OPTS="-Xms256m -Xmx512m"
+export PATH=$M2:$PATH
 
 sudo apt install maven
 
@@ -103,4 +115,10 @@ npx knex migrate:make create_incidents
 npx knex migrate:latest <executa a criação da table>
 npx knex migrate:rollback <desfaz o ultimo migrate ou criação>
 npx knex migrate:list <lista as ultimas execuções ou criações>
+
+
+## Comandos do Projeto DemoQuarkus ##
+mvn quarkus:dev
+./mvnw package -Dnative -Dquarkus.native.container-build=true
+
 
