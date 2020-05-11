@@ -1,10 +1,25 @@
 # Instalação e configuração de ambiemte #
 
+https://www.cyberciti.biz/faq/upgrade-ubuntu-18-04-to-20-04-lts-using-command-line/
+
+sudo apt update && sudo apt upgrade comman
+sudo reboot command
+sudo apt install update-manager-core
+sudo do-release-upgrade
+sudo reboot
+
+
+sudo dpkg --configure -a
+sudo ubuntu-drivers autoinstall
+
+
 ## VsCode ##
 sudo apt install code
 
+
 ## JDK8 ##
 sudo add-apt-repository ppa:webupd8team/java
+
 
 ## Eclipse ##
 https://www.eclipse.org/downloads/
@@ -25,6 +40,65 @@ export PATH=/usr/local/apache-maven-3.x.y/bin:$PATH
 
 sudo apt install maven
 
+## MAVEN 3.6.3 ##
+apt-get update
+apt-get install default-jdk
+
+update-alternatives --config java
+
+There is only one alternative in link group java (providing /usr/bin/java): /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+Nothing to configure.
+
+vi /etc/profile.d/java.sh
+
+#/bin/bash
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+
+reboot
+
+ env | grep JAVA_HOME
+
+JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+
+java -version
+
+openjdk version "11.0.4" 2019-07-16
+OpenJDK Runtime Environment (build 11.0.4+11-post-Ubuntu-1ubuntu219.04)
+OpenJDK 64-Bit Server VM (build 11.0.4+11-post-Ubuntu-1ubuntu219.04, mixed mode, sharing)
+
+mkdir /downloads
+cd /downloads
+wget http://mirror.nbtelecom.com.br/apache/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
+
+cd /downloads
+tar -zxvf apache-maven-3.6.3-bin.tar.gz -C /opt/
+ln -s /opt/apache-maven-3.6.3 /opt/maven
+
+vi /etc/profile.d/maven.sh
+
+#/bin/bash
+export M2_HOME=/opt/maven
+export MAVEN_HOME=/opt/maven
+export PATH=/opt/maven/bin:${PATH}
+
+reboot
+
+env | grep -E "JAVA_HOME|M2_HOME|MAVEN|PATH"
+
+JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+M2_HOME=/opt/maven
+MAVEN_HOME=/opt/maven
+PATH=/opt/maven/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+
+mvn -version
+
+Apache Maven 3.6.2 (40f52333136460af0dc0d7232c0dc0bcf0d9e117; 2019-08-27T15:06:16Z)
+Maven home: /opt/maven
+Java version: 11.0.4, vendor: Ubuntu, runtime: /usr/lib/jvm/java-11-openjdk-amd64
+Default locale: en_US, platform encoding: UTF-8
+OS name: "linux", version: "5.0.0-31-generic", arch: "amd64", family: "unix"
+
+
 ## NodeJs ##
 sudo apt install nodejs
 
@@ -36,9 +110,6 @@ sudo apt install gitk
 
 ## NPM ##
 sudo apt install npm
-
-## Gitk ##
-sudo apt install gitk
 
 ## VPN ##
 sudo apt install openvpn network-manager-openvpn-gnome openvpn-systemd-resolved
@@ -68,6 +139,41 @@ sudo apt install docker-ce
 sudo groupadd docker
 sudo usermod -aG docker $USER
 
+#### Docker ####
+sudo dockerd --debug
+sudo update-ca-certificates
+sudo service docker restart
+sudo systemctl status docker
+sudo systemctl daemon-reload
+
+mkdir /etc/docker/certs.d
+mkdir -p  /etc/docker/certs.d/atf.intranet.bb.com.br:5001
+
+
+mkdir ~/Downloads/certificado
+cd ~/Downloads/certificado
+
+openssl genrsa -out client.key 4096
+openssl req -new -x509 -text -key client.key -out client.cert
+cp client.key /etc/docker/certs.d/atf.intranet.bb.com.br:5001/client.key
+cp client.cert /etc/docker/certs.d/atf.intranet.bb.com.br:5001/client.cert
+
+openssl req \
+  -newkey rsa:4096 -nodes -sha256 -keyout domain.key \
+  -x509 -days 365 -out domain.crt
+cp domain.crt /etc/docker/certs.d/atf.intranet.bb.com.br:5001/ca.crt
+
+cp ~/Downloads/certificado/domain.crt /usr/local/share/ca-certificates/mydomain.com.crt
+sudo update-ca-certificates
+sudo service docker restart
+sudo systemctl daemon-reload
+
+Pra apagar redes e imagens
+    sudo rm -r /var/lib/docker/network
+
+Pra zerar as redes
+    docker system prune
+
 
 ## SisBB ##
 https://www.vivaolinux.com.br/dica/Instalar-o-emulador-de-Telnet-PW3270
@@ -84,6 +190,20 @@ docker stop <nome da imagem>
 docker system prune <finaliza todos os processos docker>
 docker-compose up <inicializa o serviços de banco>
 mvn clean package <rodar da app>
+
+
+
+## Comandos Quarkus ##
+http://localhost:8088/hello/
+http://localhost:8088/swagger-ui/
+mvn quarkus:add-extensions -Dextensions="openapi"
+mvn quarkus:add-extensions -Dextensions="orm-panache"
+mvn quarkus:add-extensions -Dextensions="jdbc-mysql"
+mvn quarkus:add-extensions -Dextensions="resteasy-jsonb"
+mvn quarkus:add-extensions -Dextensions="health"
+
+docker run --network host -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=teste -d --rm mysql:8.0.19
+
 
 
 ## Comandos do Projeto OmniStack ##
@@ -103,4 +223,5 @@ npx knex migrate:make create_incidents
 npx knex migrate:latest <executa a criação da table>
 npx knex migrate:rollback <desfaz o ultimo migrate ou criação>
 npx knex migrate:list <lista as ultimas execuções ou criações>
+
 
