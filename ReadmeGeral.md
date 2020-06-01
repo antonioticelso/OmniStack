@@ -1,5 +1,4 @@
 # Instalação e configuração de ambiemte #
-
 https://www.cyberciti.biz/faq/upgrade-ubuntu-18-04-to-20-04-lts-using-command-line/
 
 sudo apt update && sudo apt upgrade comman
@@ -7,7 +6,6 @@ sudo reboot command
 sudo apt install update-manager-core
 sudo do-release-upgrade
 sudo reboot
-
 
 sudo dpkg --configure -a
 sudo ubuntu-drivers autoinstall
@@ -56,7 +54,7 @@ export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 
 reboot
 
- env | grep JAVA_HOME
+env | grep JAVA_HOME
 
 JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 
@@ -149,7 +147,6 @@ sudo systemctl daemon-reload
 mkdir /etc/docker/certs.d
 mkdir -p  /etc/docker/certs.d/atf.intranet.bb.com.br:5001
 
-
 mkdir ~/Downloads/certificado
 cd ~/Downloads/certificado
 
@@ -192,7 +189,6 @@ docker-compose up <inicializa o serviços de banco>
 mvn clean package <rodar da app>
 
 
-
 ## Comandos Quarkus ##
 http://localhost:8088/hello/
 http://localhost:8088/swagger-ui/
@@ -203,7 +199,6 @@ mvn quarkus:add-extensions -Dextensions="resteasy-jsonb"
 mvn quarkus:add-extensions -Dextensions="health"
 
 docker run --network host -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=teste -d --rm mysql:8.0.19
-
 
 
 ## Comandos do Projeto OmniStack ##
@@ -225,3 +220,4 @@ npx knex migrate:rollback <desfaz o ultimo migrate ou criação>
 npx knex migrate:list <lista as ultimas execuções ou criações>
 
 
+                
