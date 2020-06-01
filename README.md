@@ -19,7 +19,6 @@ npx knex migrate:list <lista as ultimas execuções ou criações>
 
 
 ## Nono ##
-
 mvn quarkus:dev
 mvn clean package
 mvn clean package -DskipTests
