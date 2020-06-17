@@ -14,6 +14,9 @@ sudo ubuntu-drivers autoinstall
 ## VsCode ##
 sudo apt install code
 
+## Intellij ##
+sudo snap install intellij-idea-ultimate --classic
+
 
 ## JDK8 ##
 sudo add-apt-repository ppa:webupd8team/java
@@ -39,10 +42,10 @@ export PATH=/usr/local/apache-maven-3.x.y/bin:$PATH
 sudo apt install maven
 
 ## MAVEN 3.6.3 ##
-apt-get update
-apt-get install default-jdk
+sudo apt-get update
+sudo apt-get install default-jdk
 
-update-alternatives --config java
+sudo update-alternatives --config java
 
 There is only one alternative in link group java (providing /usr/bin/java): /usr/lib/jvm/java-11-openjdk-amd64/bin/java
 Nothing to configure.
@@ -103,6 +106,8 @@ sudo apt install nodejs
 ## Git ##
 sudo apt install git
 
+git config --global http.sslVerify "false"
+
 ## Gitk ##
 sudo apt install gitk
 
@@ -122,8 +127,8 @@ sudo apt-get install \
     curl \
     software-properties-common
 
-export HTTP_PROXY=http://c1314151:89562312@localhost:40080
-export HTTPS_PROXY=http://c1314151:89562312@localhost:40080
+export HTTP_PROXY=http://<USUARIO>:<SENHA>@localhost:40080
+export HTTPS_PROXY=http://<USUARIO>:<SENHA>@localhost:40080
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
