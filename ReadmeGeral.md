@@ -1,15 +1,13 @@
 # Instalação e configuração de ambiemte #
 https://www.cyberciti.biz/faq/upgrade-ubuntu-18-04-to-20-04-lts-using-command-line/
 
-sudo apt update && sudo apt upgrade comman
-sudo reboot command
-sudo apt install update-manager-core
-sudo do-release-upgrade
-sudo reboot
-
-sudo dpkg --configure -a
+sudo apt update && sudo apt upgrade comman /
+sudo reboot command /
+sudo apt install update-manager-core /
+sudo do-release-upgrade /
+sudo reboot /
+sudo dpkg --configure -a /
 sudo ubuntu-drivers autoinstall
-
 
 ## VsCode ##
 sudo apt install code
@@ -17,21 +15,17 @@ sudo apt install code
 ## Intellij ##
 sudo snap install intellij-idea-ultimate --classic
 
-
 ## JDK8 ##
 sudo add-apt-repository ppa:webupd8team/java
-
 
 ## Eclipse ##
 https://www.eclipse.org/downloads/
 
-
-## Maven##
+## Maven ##
 ### Arquivos compactados ###
 --> Descompactando
-tar -zxvf apache-maven-3.6.3-bin.tar.gz
-
-tar -Jxxvf node-v12.16.1-linux-x64.tar.xz
+tar -zxvf apache-maven-3.6.3-bin.tar.gz /
+tar -Jxxvf node-v12.16.1-linux-x64.tar.xz /
 
 --> Movendo pastas
 sudo mv <nomeArquivo> apache-maven-3.6.3/ /opt/
@@ -42,9 +36,8 @@ export PATH=/usr/local/apache-maven-3.x.y/bin:$PATH
 sudo apt install maven
 
 ## MAVEN 3.6.3 ##
-sudo apt-get update
-sudo apt-get install default-jdk
-
+sudo apt-get update /
+sudo apt-get install default-jdk /
 sudo update-alternatives --config java
 
 There is only one alternative in link group java (providing /usr/bin/java): /usr/lib/jvm/java-11-openjdk-amd64/bin/java
@@ -94,6 +87,7 @@ PATH=/opt/maven/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 mvn -version
 
 Apache Maven 3.6.2 (40f52333136460af0dc0d7232c0dc0bcf0d9e117; 2019-08-27T15:06:16Z)
+
 Maven home: /opt/maven
 Java version: 11.0.4, vendor: Ubuntu, runtime: /usr/lib/jvm/java-11-openjdk-amd64
 Default locale: en_US, platform encoding: UTF-8
@@ -101,11 +95,17 @@ OS name: "linux", version: "5.0.0-31-generic", arch: "amd64", family: "unix"
 
 
 ## NodeJs ##
-sudo apt install nodejs
+sudo npm install -g n (versão estável) /
+sudo npm install -g stable /
+sudo npm install -g npm /
+sudo apt update /
+sudo apt install nodejs;
+
+sudo apt remove nodejs (removendo o node) /
+sudo apt remove npm (removendo a npm);
 
 ## Git ##
-sudo apt install git
-
+sudo apt install git /
 git config --global http.sslVerify "false"
 
 ## Gitk ##
@@ -119,6 +119,7 @@ sudo apt install openvpn network-manager-openvpn-gnome openvpn-systemd-resolved
 
 ## Docker ##
 sudo apt-get remove docker docker-engine docker.io
+
 sudo apt update
 
 sudo apt-get install \
@@ -137,22 +138,24 @@ sudo add-apt-repository \
    $(lsb_release -cs) \
    stable"
 
-sudo apt update
-sudo apt install docker-ce   
-sudo groupadd docker
+sudo apt update \
+sudo apt install docker-ce \
+sudo groupadd docker \
 sudo usermod -aG docker $USER
 
 #### Docker ####
-sudo dockerd --debug
-sudo update-ca-certificates
-sudo service docker restart
-sudo systemctl status docker
-sudo systemctl daemon-reload
+sudo dockerd --debug \
+sudo update-ca-certificates \
+sudo service docker restart \
+sudo systemctl status docker \
+sudo systemctl daemon-reload \
 
 mkdir /etc/docker/certs.d
+
 mkdir -p  /etc/docker/certs.d/atf.intranet.bb.com.br:5001
 
 mkdir ~/Downloads/certificado
+
 cd ~/Downloads/certificado
 
 openssl genrsa -out client.key 4096
@@ -166,9 +169,9 @@ openssl req \
 cp domain.crt /etc/docker/certs.d/atf.intranet.bb.com.br:5001/ca.crt
 
 cp ~/Downloads/certificado/domain.crt /usr/local/share/ca-certificates/mydomain.com.crt
-sudo update-ca-certificates
-sudo service docker restart
-sudo systemctl daemon-reload
+sudo update-ca-certificates \
+sudo service docker restart \
+sudo systemctl daemon-reload \
 
 Pra apagar redes e imagens
     sudo rm -r /var/lib/docker/network
@@ -181,45 +184,56 @@ Pra zerar as redes
 https://www.vivaolinux.com.br/dica/Instalar-o-emulador-de-Telnet-PW3270
 
 sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/PerryWerneck:/pw3270/xUbuntu_19.10/ /' > /etc/apt/sources.list.d/home:PerryWerneck:pw3270.list"
-wget -nv https://download.opensuse.org/repositories/home:PerryWerneck:pw3270/xUbuntu_19.10/Release.key -O Release.key
-sudo apt-key add - < Release.key
-sudo apt-get update
-sudo apt-get install pw3270
 
+wget -nv https://download.opensuse.org/repositories/home:PerryWerneck:pw3270/xUbuntu_19.10/Release.key -O Release.key
+
+sudo apt-key add - < Release.key
+
+sudo apt-get update \
+sudo apt-get install pw3270
 
 ## Comandos do Projeto Docker ##
 docker stop <nome da imagem>
+
 docker system prune <finaliza todos os processos docker>
+
 docker-compose up <inicializa o serviços de banco>
+
 mvn clean package <rodar da app>
 
 
 ## Comandos Quarkus ##
 http://localhost:8088/hello/
+
 http://localhost:8088/swagger-ui/
+
 mvn quarkus:add-extensions -Dextensions="openapi"
+
 mvn quarkus:add-extensions -Dextensions="orm-panache"
+
 mvn quarkus:add-extensions -Dextensions="jdbc-mysql"
+
 mvn quarkus:add-extensions -Dextensions="resteasy-jsonb"
+
 mvn quarkus:add-extensions -Dextensions="health"
 
 docker run --network host -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=teste -d --rm mysql:8.0.19
 
 
 ## Comandos do Projeto OmniStack ##
-sudo su <root>
-mkdir <nome da nova pasta>
-npm init -y
-npm install express
+sudo su <root> /
+mkdir <nome da nova pasta> /
+npm init -y /
+npm install express /
 node index.js <inicialização do backend e banco para o localhost e suas rotas>
-npx create-react-app <nome da app>
-npm start
+npx create-react-app <nome da app> /
+npm start /
 npm install nodemon -D <framework para restart de banco de dados on-line>
 npm install knex <gerenciador de banco de dados>
 npm install sqlite3 <banco de dados utilizado>
-npx knex init
+npx knex init /
 npx knex migrate:make <nome da create_ongs>
-npx knex migrate:make create_incidents
+npx knex migrate:make create_incidents /
 npx knex migrate:latest <executa a criação da table>
 npx knex migrate:rollback <desfaz o ultimo migrate ou criação>
 npx knex migrate:list <lista as ultimas execuções ou criações>
