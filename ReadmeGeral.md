@@ -111,6 +111,11 @@ git config --global http.sslVerify "false"
 ## Gitk ##
 sudo apt install gitk
 
+## LibreOffice ##
+sudo add-apt-repository ppa:libreoffice/ppa
+sudo apt update
+sudo apt install libreoffice
+
 ## NPM ##
 sudo apt install npm
 
