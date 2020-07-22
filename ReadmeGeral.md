@@ -12,6 +12,11 @@ sudo ubuntu-drivers autoinstall
 ## VsCode ##
 sudo apt install code
 
+## Java ##
+sudo add-apt-repository 'ppa:webupd8team/java'
+sudo apt update
+
+
 ## Intellij ##
 sudo snap install intellij-idea-ultimate --classic
 
@@ -93,6 +98,11 @@ Java version: 11.0.4, vendor: Ubuntu, runtime: /usr/lib/jvm/java-11-openjdk-amd6
 Default locale: en_US, platform encoding: UTF-8
 OS name: "linux", version: "5.0.0-31-generic", arch: "amd64", family: "unix"
 
+## Snap ##
+sudo apt install snapd
+
+## Intellij ##
+sudo snap install intellij-idea-ultimate --classic
 
 ## NodeJs ##
 sudo npm install -g n (versão estável) /
@@ -100,9 +110,22 @@ sudo npm install -g stable /
 sudo npm install -g npm /
 sudo apt update /
 sudo apt install nodejs;
+##### Update #####
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+sudo apt-get install -y nodejs
+##### Remover #####
+sudo apt remove nodejs (removendo o node)
 
-sudo apt remove nodejs (removendo o node) /
+
+## NPM ##
+sudo apt install npm
+##### Update #####
+sudo npm cache clean -f
+sudo npm install -g n
+sudo n stable
+##### Remover #####
 sudo apt remove npm (removendo a npm);
+
 
 ## Git ##
 sudo apt install git /
@@ -111,8 +134,20 @@ git config --global http.sslVerify "false"
 ## Gitk ##
 sudo apt install gitk
 
-## NPM ##
-sudo apt install npm
+## Impresora HP ##
+sudo apt-get install hplip hplip-gui
+
+## Postgresql ##
+sudo apt update
+sudo apt install postgresql postgresql-contrib
+sudo -u postgres psql -c "SELECT version();"
+
+#### Alterar senha do Postgresql ####
+sudo passwd postgres
+su postgres
+psql -c "ALTER USER postgres WITH PASSWORD 'nova_senha'" -d template1
+
+
 
 ## VPN ##
 sudo apt install openvpn network-manager-openvpn-gnome openvpn-systemd-resolved
