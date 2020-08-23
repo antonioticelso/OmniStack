@@ -148,7 +148,6 @@ su postgres
 psql -c "ALTER USER postgres WITH PASSWORD 'nova_senha'" -d template1
 
 
-
 ## VPN ##
 sudo apt install openvpn network-manager-openvpn-gnome openvpn-systemd-resolved
 
@@ -272,6 +271,5 @@ npx knex migrate:make create_incidents /
 npx knex migrate:latest <executa a criação da table>
 npx knex migrate:rollback <desfaz o ultimo migrate ou criação>
 npx knex migrate:list <lista as ultimas execuções ou criações>
-
 
                 
