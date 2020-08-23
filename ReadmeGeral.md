@@ -134,8 +134,6 @@ git config --global http.sslVerify "false"
 ## Gitk ##
 sudo apt install gitk
 
-## Impresora HP ##
-sudo apt-get install hplip hplip-gui
 
 ## Postgresql ##
 sudo apt update
