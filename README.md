@@ -17,15 +17,11 @@ npx knex migrate:rollback <desfaz o ultimo migrate ou criação>
 npx knex migrate:list <lista as ultimas execuções ou criações>
 
 
-##  ##
 
-
-##  ##
-
-
-##  ##
-
-
-##  ##
+## Nono ##
+mvn quarkus:dev
+mvn clean package
+mvn clean package -DskipTests
+mvn compile quarkus:dev
 
 

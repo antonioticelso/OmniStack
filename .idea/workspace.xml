@@ -104,10 +104,12 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Atualizacao 22 agosto 2020" />
-    <option name="LAST_COMMIT_MESSAGE" value="Atualizacao 22 agosto 2020" />
+    <MESSAGE value="Merge branch 'tonhaoDev' of https://github.com/antonioticelso/OmniStack into tonhaoDev" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'tonhaoDev' of https://github.com/antonioticelso/OmniStack into tonhaoDev" />
   </component>
   <component name="WindowStateProjectService">
     <state x="358" y="90" width="770" height="882" key="CommitChangelistDialog2" timestamp="1598149671728">
