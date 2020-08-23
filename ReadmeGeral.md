@@ -209,17 +209,12 @@ mvn clean package <rodar da app>
 
 ## Comandos Quarkus ##
 http://localhost:8088/hello/
-
 http://localhost:8088/swagger-ui/
 
 mvn quarkus:add-extensions -Dextensions="openapi"
-
 mvn quarkus:add-extensions -Dextensions="orm-panache"
-
 mvn quarkus:add-extensions -Dextensions="jdbc-mysql"
-
 mvn quarkus:add-extensions -Dextensions="resteasy-jsonb"
-
 mvn quarkus:add-extensions -Dextensions="health"
 
 docker run --network host -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=teste -d --rm mysql:8.0.19
@@ -242,6 +237,5 @@ npx knex migrate:make create_incidents /
 npx knex migrate:latest <executa a criação da table>
 npx knex migrate:rollback <desfaz o ultimo migrate ou criação>
 npx knex migrate:list <lista as ultimas execuções ou criações>
-
 
                 
