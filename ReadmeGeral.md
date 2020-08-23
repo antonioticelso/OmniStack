@@ -49,9 +49,6 @@ sudo apt install gitk
 ## NPM ##
 sudo apt install npm
 
-## Gitk ##
-sudo apt install gitk
-
 ## VPN ##
 sudo apt install openvpn network-manager-openvpn-gnome openvpn-systemd-resolved
 
