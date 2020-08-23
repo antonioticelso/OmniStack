@@ -16,7 +16,6 @@ sudo apt install code
 sudo add-apt-repository 'ppa:webupd8team/java'
 sudo apt update
 
-
 ## Intellij ##
 sudo snap install intellij-idea-ultimate --classic
 
@@ -134,7 +133,6 @@ git config --global http.sslVerify "false"
 ## Gitk ##
 sudo apt install gitk
 
-
 ## Postgresql ##
 sudo apt update
 sudo apt install postgresql postgresql-contrib
@@ -145,6 +143,13 @@ sudo passwd postgres
 su postgres
 psql -c "ALTER USER postgres WITH PASSWORD 'nova_senha'" -d template1
 
+## LibreOffice ##
+sudo add-apt-repository ppa:libreoffice/ppa
+sudo apt update
+sudo apt install libreoffice
+
+## NPM ##
+sudo apt install npm
 
 ## VPN ##
 sudo apt install openvpn network-manager-openvpn-gnome openvpn-systemd-resolved
@@ -236,17 +241,12 @@ mvn clean package <rodar da app>
 
 ## Comandos Quarkus ##
 http://localhost:8088/hello/
-
 http://localhost:8088/swagger-ui/
 
 mvn quarkus:add-extensions -Dextensions="openapi"
-
 mvn quarkus:add-extensions -Dextensions="orm-panache"
-
 mvn quarkus:add-extensions -Dextensions="jdbc-mysql"
-
 mvn quarkus:add-extensions -Dextensions="resteasy-jsonb"
-
 mvn quarkus:add-extensions -Dextensions="health"
 
 docker run --network host -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=teste -d --rm mysql:8.0.19
