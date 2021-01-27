@@ -1,19 +1,26 @@
 # Instalação e configuração de ambiemte #
 https://www.cyberciti.biz/faq/upgrade-ubuntu-18-04-to-20-04-lts-using-command-line/
 
-sudo apt update && sudo apt upgrade comman /
-sudo reboot command /
-sudo apt install update-manager-core /
-sudo do-release-upgrade /
-sudo reboot /
-sudo dpkg --configure -a /
+sudo apt update && sudo apt upgrade comman
+
+sudo reboot command
+
+sudo apt install update-manager-core
+
+sudo do-release-upgrade
+
+sudo reboot 
+
+sudo dpkg --configure -a
+
 sudo ubuntu-drivers autoinstall
 
 ## VsCode ##
-sudo apt install code
+sudo dpkg -i code.deb
 
 ## Java ##
 sudo add-apt-repository 'ppa:webupd8team/java'
+
 sudo apt update
 
 ## Intellij ##
