@@ -182,23 +182,6 @@ sudo docker run hello-world
 docker --version
 docker compose --version
 
-    
-sudo apt-get install \
-    apt-transport-https \
-    ca-certificates \
-    curl \
-    software-properties-common
-
-export HTTP_PROXY=http://<USUARIO>:<SENHA>@localhost:40080
-export HTTPS_PROXY=http://<USUARIO>:<SENHA>@localhost:40080
-
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-
-sudo add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-   $(lsb_release -cs) \
-   stable"
-
 sudo apt update \
 sudo apt install docker-ce \
 sudo groupadd docker \
